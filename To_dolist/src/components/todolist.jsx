@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./todo.css";
 function ToDolist(){
-const[task,setTasks]=useState(["blah","blah"]);
+const[task,setTasks]=useState([{ title: "Read book", completed: false, timestamp: Date.now() }]);
 const[addNewtask,setNewtask]=useState("");
 function inputHandleChange(event){
 
@@ -10,7 +10,7 @@ setNewtask(event.target.value);
 function addtask(){
 
     setTasks(t=>[...t,addNewtask]);
-    setNewtask("");
+    
 }
 function deleteTask(index){
 const updatedTasks = task.filter((_,i)=>i!==index);
@@ -40,7 +40,7 @@ return(
     <ol>
         {task.map((task,index)=>
 <div className="qwertyu"><li key={index}>
-    <span className="texty">{task}</span>
+    <span className="texty">{task.title }</span>
         <button className="delete"  onClick={()=>deleteTask(index)}>Delete</button>
          <button className="moveUp"  onClick={()=>moveUp(index)}>Move Up</button>
           <button  className="moveDown" onClick={()=>moveDown(index)}>Move down</button>
